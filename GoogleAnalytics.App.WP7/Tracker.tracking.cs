@@ -85,6 +85,11 @@ namespace GoogleAnalytics.App
             };
 
             if (Anonymize) parameters.Add("aip", "1");
+            if (SessionStart) {
+                parameters.Add("sc", "start");
+                SessionStart = false;
+            }
+
             if (!string.IsNullOrEmpty(AppName)) parameters.Add("an", AppName);
             if (!string.IsNullOrEmpty(AppVersion)) parameters.Add("av", AppVersion);
             if (!string.IsNullOrEmpty(ScreenColors)) parameters.Add("sd", ScreenColors);

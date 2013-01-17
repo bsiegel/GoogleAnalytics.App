@@ -11,5 +11,11 @@ namespace GoogleAnalytics.App
         string GetScreenResolution();
 
         string GetScreenColors();
+
+        string GetOsPlatform();
+
+        string GetOsVersion();
+
+        string GetDeviceName();
     }
 }

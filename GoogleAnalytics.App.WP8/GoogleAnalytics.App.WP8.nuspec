@@ -9,9 +9,9 @@
     <id>GoogleAnalytics.App.WP8</id>
     <title>GoogleAnalytics.App.WP8</title>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>GoogleAnalytics.App was created to have a means of tracking specific URL's directly from C#. For example, it enables you to log API calls to Google Analytics.</description>
-    <summary>GoogleAnalytics.App was created to have a means of tracking specific URL's directly from C#. For example, it enables you to log API calls to Google Analytics.</summary>
-    <copyright>Copyright 2012 - 2013 Maarten Balliauw</copyright>
-    <tags>google analytics ga wp8 wp7 windows phone windowsphone api rest client tracker stats statistics wp7 mango phone</tags>
+    <description>GoogleAnalytics.App is an unofficial SDK for interacting with Google Analytics. It is compatible with version 2 of the Google Analytics SDK for iOS and Android and uses Google Measurement Protocol to report app- and mobile-specific metrics.</description>
+    <summary>Google App Analytics for Windows Phone and Windows RT, Windows Phone 8 package.</summary>
+    <copyright>Copyright 2012 - 2013 Maarten Balliauw. Copyright 2013 Brandon Siegel.</copyright>
+    <tags>google analytics googleanalytics app ga wp8 windows phone windowsphone api sdk rest client tracker stats statistics measurement</tags>
   </metadata>
 </package>

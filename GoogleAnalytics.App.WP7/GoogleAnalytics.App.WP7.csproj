@@ -60,20 +60,17 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Threading.Tasks">
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.12-beta\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.12-beta\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.12-beta\lib\sl4-windowsphone71\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Device" />
-    <Reference Include="System.Runtime">
+    <Reference Include="System.Runtime, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Bcl.1.0.11-beta\lib\sl4-windowsphone71\System.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Tasks">
+    <Reference Include="System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Bcl.1.0.11-beta\lib\sl4-windowsphone71\System.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows" />
@@ -85,29 +82,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\GoogleAnalytics.App\DateTimeExtensions.cs">
-      <Link>DateTimeExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\IAnalyticsSession.cs">
-      <Link>IAnalyticsSession.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Tracker.cs">
-      <Link>Tracker.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Tracker.tracking.cs">
-      <Link>Tracker.tracking.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\TrackingResult.cs">
-      <Link>TrackingResult.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Transaction.cs">
-      <Link>Transaction.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\TransactionItem.cs">
-      <Link>TransactionItem.cs</Link>
-    </Compile>
+    <Compile Include="IAnalyticsSession.cs" />
     <Compile Include="ManifestAppInfo.cs" />
+    <Compile Include="Tracker.cs" />
+    <Compile Include="Tracker.tracking.cs" />
     <Compile Include="Tracker.windowsphone.cs" />
+    <Compile Include="TrackingResult.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionItem.cs" />
     <Compile Include="WindowsPhoneAnalyticsSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

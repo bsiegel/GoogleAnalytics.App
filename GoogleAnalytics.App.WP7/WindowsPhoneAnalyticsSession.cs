@@ -39,5 +39,20 @@ namespace GoogleAnalytics.App
         {
             return string.Format("{0}-bit", ManifestAppInfo.BitsPerPixel ?? "16");
         }
+
+        public string GetOsPlatform()
+        {
+            return "Windows Phone";
+        }
+
+        public string GetOsVersion()
+        {
+            return string.Format("Windows Phone OS {0}.{1}", Environment.OSVersion.Version.Major, Environment.OSVersion.Version.Minor);
+        }
+
+        public string GetDeviceName()
+        {
+            return string.Format("{0} {1}", Microsoft.Phone.Info.DeviceStatus.DeviceManufacturer, Microsoft.Phone.Info.DeviceStatus.DeviceName);
+        }
     }
 }

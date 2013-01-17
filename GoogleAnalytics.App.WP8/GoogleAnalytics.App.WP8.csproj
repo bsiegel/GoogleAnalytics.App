@@ -131,31 +131,28 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\GoogleAnalytics.App.WP7\IAnalyticsSession.cs">
+      <Link>IAnalyticsSession.cs</Link>
+    </Compile>
     <Compile Include="..\GoogleAnalytics.App.WP7\ManifestAppInfo.cs">
       <Link>ManifestAppInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\GoogleAnalytics.App.WP7\Tracker.cs">
+      <Link>Tracker.cs</Link>
+    </Compile>
+    <Compile Include="..\GoogleAnalytics.App.WP7\Tracker.tracking.cs">
+      <Link>Tracker.tracking.cs</Link>
     </Compile>
     <Compile Include="..\GoogleAnalytics.App.WP7\Tracker.windowsphone.cs">
       <Link>Tracker.windowsphone.cs</Link>
     </Compile>
-    <Compile Include="..\GoogleAnalytics.App\DateTimeExtensions.cs">
-      <Link>DateTimeExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\IAnalyticsSession.cs">
-      <Link>IAnalyticsSession.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Tracker.cs">
-      <Link>Tracker.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Tracker.tracking.cs">
-      <Link>Tracker.tracking.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\TrackingResult.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\TrackingResult.cs">
       <Link>TrackingResult.cs</Link>
     </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Transaction.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\Transaction.cs">
       <Link>Transaction.cs</Link>
     </Compile>
-    <Compile Include="..\GoogleAnalytics.App\TransactionItem.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\TransactionItem.cs">
       <Link>TransactionItem.cs</Link>
     </Compile>
     <Compile Include="TaskEx.cs" />
@@ -166,15 +163,6 @@
     <None Include="GoogleAnalytics.App.WP8.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.12-beta\lib\wp8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone">
-      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.12-beta\lib\wp8\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

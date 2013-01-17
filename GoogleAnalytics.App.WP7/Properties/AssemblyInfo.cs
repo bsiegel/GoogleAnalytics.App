@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GoogleAnalytics.App.WP7")]
-[assembly: AssemblyDescription("GoogleAnalytics.App - A C# library for tracking Google Analytics.")]
+[assembly: AssemblyDescription("GoogleAnalytics.App")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Maarten Balliauw")]
+[assembly: AssemblyCompany("Maarten Balliauw and Brandon Siegel")]
 [assembly: AssemblyProduct("GoogleAnalytics.App.WP7")]
-[assembly: AssemblyCopyright("Copyright © Maarten Balliauw 2012 - 2013")]
+[assembly: AssemblyCopyright("Copyright © Maarten Balliauw 2012 - 2013. Copyright © Brandon Siegel 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("108221af-d9cb-4bf3-8420-036e869c1e56")]
+[assembly: Guid("236949A5-20BD-4A43-BAA2-405792A0ED4D")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.4.*")]
+[assembly: AssemblyVersion("2.0.*")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

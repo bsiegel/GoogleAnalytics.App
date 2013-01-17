@@ -1,70 +1,126 @@
-# GoogleAnalyticsTracker
-GoogleAnalyticsTracker - A C# library for tracking Google Analytics
+# GoogleAnalytics.App - Google App Analytics library for Windows Phone and Windows RT
+GoogleAnalytics.App is an unofficial SDK for interacting with Google Analytics. It is compatible with version 2 of the Google Analytics SDK for iOS and Android and uses Google Measurement Protocol to report app- and mobile-specific metrics.
 
-## Like this project?
-[<img src="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif">](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C8GLSG8E33NA4) via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C8GLSG8E33NA4).
 
-## What can it be used for?
-GoogleAnalyticsTracker was created to have a means of tracking specific URL's directly from C#. For example, when creating an API using the ASP.NET MVC framework, GoogleAnalyticsTracker enables you to track usage of the API by calling directly into Google Analytics.
+# Get it on NuGet!
+    Install-Package GoogleAnalytics.App
 
-## Get it on NuGet!
 
-    Install-Package GoogleAnalyticsTracker
-	
-## Example usage
-Using GoogleAnalyticsTracker is very straightforward. In your code, add the following structure wherever you want to track page views:
+# API
+The GoogleAnalytics.App API was designed to approximately match that of the official Google Analytics SDKs for iOS and Android. While it currently offers a subset of the features provided by the official SDKs, the hope is that it will grow over time to match the same level of functionality and to grow closer to the APIs offered by the official SDKs.
 
-    using (Tracker tracker = new Tracker("UA-XXXXXX-XX", "www.example.org"))
-    {
-        tracker.TrackPageView("My API - Create", "api/create");
-        tracker.TrackPageView("MY API - List", "api/list");
-    }
+The tracking functions of the GoogleAnalytics.App API are all performed asynchronously, using the async/await functionality offered by C# 5. The Async Targetting Pack (Microsoft.Bcl.Async) is used to provide this functionality for Windows Phone 7 where async/await are not supported natively.
 
-Or without a using block:
 
-    Tracker tracker = new Tracker("UA-XXXXXX-XX", "www.example.org");
-    tracker.TrackPageView("My API - Create", "api/create");
+## Tracker
+Tracker is the main object used to report analytics information. Obtain an instance of Tracker, and then call its `*Async` methods to track various types of activities.
 
-A number of extension methods are available which use the provided HttpContext as the source for URL and user propertires:
+### Constructors
 
-    Tracker tracker = new Tracker("UA-XXXXXX-XX", "www.example.org");
-    tracker.TrackPageView(HttpContext, "My API - Create");
+### `Tracker(string trackingId)`
+Initialize a new Tracker instance with the given tracking ID (e.g. "UA-XXXXXX-XX").
 
-Finally, an ActionFilter for use with ASP.NET MVC is available:
+### Properties
 
-	[ActionTracking("UA-XXXXXX-XX", "www.example.org")]
-	public class ApiController
-	    : Controller
-	{
-	    public JsonResult Create()
-	    {
-	        return Json(true);
-	    }
-	}
+### `bool UseHttps`
+Optional. When true, send analytics messages over SSL. The default value for this property is `false`.
 
-This filter can also be applied as a global action filter, optionally filtering the requests to log:
+### `bool Anonymize`
+Optional. When true, send a flag in each analytics message that instructs Google to anonymize the IP address of the sender. The default value for this property is `false`.
 
-	public class MvcApplication : System.Web.HttpApplication
-	{
-	    public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-	    {
-	        filters.Add(new HandleErrorAttribute());
-	        filters.Add(new ActionTrackingAttribute(
-	            "UA-XXXXXX-XX", "www.example.org",
-	            action => action.ControllerDescriptor.ControllerName == "Api")
-	        );
-	    }
-	}
+### `bool SessionStart`
+Optional. When true, the next time a tracking call is made a parameter will be added to indicate that a new session should be started. This flag will then be cleared. When a Tracker is first instantiated, the default value for this property is `true`. Set this property to `false` before making a tracking call to prevent this default behavior.
 
-## License
-[MS-PL License](https://github.com/maartenba/GoogleAnalyticsTracker/blob/master/LICENSE.md)
+### `bool ThrowOnErrors`
+Optional. When true, if an error occurs during transmission of an analytics message, throw the exception. When false, if an error occurs during transmission of an analytics message, ignore the exception and return a TrackingResult object. The TrackingResult object will include the originating exception and will have its `Success` property set to `false`. The default value for this property is `false`.
 
-## Building the source
+### Methods
+
+### `void SetCustom(int index, string dimension)`
+Set the value of a custom dimension for all tracking calls. Each custom dimension has an associated index.
+
+### `void SetCustom(int index, long metric)`
+Set the value of a custom metric for all tracking calls. Each custom metric has an associated index.
+
+### `async Task<TrackingResult> TrackViewAsync(string screen)`
+Track that the specified view or screen was displayed.
+
+### `async Task<TrackingResult> TrackEventAsync(string category, string action, [string label = null], [long? value = null])`
+Track an event.
+
+### `async Task<TrackingResult> TrackTransactionAsync(Transaction tran)`
+Track a transaction.
+
+## Transaction
+Transaction is a structure that represents a transaction to report via Tracker's `TrackTransactionAsync` method. It contains various properties about the transaction itself, as well as zero or more TransactionItems.
+
+### Properties
+
+### `string OrderId`
+Required. A unique identifier for the transaction.
+
+### `string StoreName`
+Optional. Specifies the affiliation or store name.
+
+### `string Total`
+Optional. Specifies the total revenue associated with the transaction.
+
+### `string Tax`
+Optional. Specifies the total tax of the transaction.
+
+### `string Shipping`
+Optional. Specifies the total shipping cost of the transaction.
+
+### `List<TransactionItem> Items`
+Optional. A list of items associated with the transaction.
+
+
+## TransactionItem
+TransactionItem is a structure that represents a single item associated with a transaction.
+
+### Properties
+
+### `string Price`
+Optional. Specifies the price for a single item / unit.
+
+### `long? Quantity`
+Optional. Specifies the number of items purchased.
+
+### `string Code`
+Optional. Specifies the SKU or item code.
+
+### `string Name`
+Optional. Specifies the item name.
+
+### `string Category`
+Optional. Specifies the category that the item belongs to.
+
+
+## TrackingResult
+TrackingResult is a structure that represents the result of a call to one of Tracker's `*Async` tracking methods.
+
+### Properties
+
+### `string Url`
+The URL to which the call was made.
+
+### `Dictionary<string,string> Parameters`
+The parameters sent during the call.
+
+### `bool Success`
+A flag indicating whether the call was successful.
+
+### `Exception Exception`
+The exception that occurred during the call, if any. This is only populated when the call fails (`Success` is set to `false`) and Tracker's `ThrowOnErrors` property is also set to `false` (the default).
+
+
+# License
+[MS-PL License](https://github.com/bsiegel/GoogleAnalytics.App/blob/master/LICENSE.md)
+
+
+# Building the source
 After cloning the repository, run build.cmd. A folder named "Build" will be created and populated with:
 
 - Assemblies
 - PDB files
 - NuGet package
-
-## Who uses GoogleAnalyticsTracker?
-- [MyGet](http://www.myget.org)

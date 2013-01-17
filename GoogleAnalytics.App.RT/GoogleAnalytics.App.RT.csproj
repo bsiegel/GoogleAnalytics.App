@@ -101,36 +101,33 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="GoogleAnalytics.App.RT.nuspec" />
+    <None Include="GoogleAnalytics.App.RT.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\GoogleAnalytics.App\DateTimeExtensions.cs">
-      <Link>DateTimeExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\IAnalyticsSession.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\IAnalyticsSession.cs">
       <Link>IAnalyticsSession.cs</Link>
     </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Properties\AssemblyInfo.cs">
-      <Link>Properties\AssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Tracker.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\Tracker.cs">
       <Link>Tracker.cs</Link>
     </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Tracker.tracking.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\Tracker.tracking.cs">
       <Link>Tracker.tracking.cs</Link>
     </Compile>
-    <Compile Include="..\GoogleAnalytics.App\TrackingResult.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\TrackingResult.cs">
       <Link>TrackingResult.cs</Link>
     </Compile>
-    <Compile Include="..\GoogleAnalytics.App\Transaction.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\Transaction.cs">
       <Link>Transaction.cs</Link>
     </Compile>
-    <Compile Include="..\GoogleAnalytics.App\TransactionItem.cs">
+    <Compile Include="..\GoogleAnalytics.App.WP7\TransactionItem.cs">
       <Link>TransactionItem.cs</Link>
     </Compile>
-    <Compile Include="Interop\Placeholder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ManifestAppInfo.cs" />
     <Compile Include="TaskEx.cs" />
+    <Compile Include="Tracker.winrt.cs" />
     <Compile Include="WindowsRTAnalyticsSession.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">

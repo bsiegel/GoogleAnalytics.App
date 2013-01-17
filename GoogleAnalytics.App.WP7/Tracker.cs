@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoogleAnalytics.App
 {
@@ -17,6 +13,7 @@ namespace GoogleAnalytics.App
         public string TrackingId { get; set; } // utmac
         public string ClientId { get; set; }
         public string AppScreen { get; set; }
+        public bool SessionStart { get; set; }
         public IAnalyticsSession AnalyticsSession { get; set; }
 
         public string AppName { get; set; }
@@ -25,6 +22,10 @@ namespace GoogleAnalytics.App
 
         public string Language { get; set; }
         public string UserAgent { get; set; }
+
+        public string OsPlatform { get; set; }
+        public string OsVersion { get; set; }
+        public string DeviceName { get; set; }
         public string ScreenResolution { get; set; }
         public string ScreenColors { get; set; }
 
@@ -40,6 +41,7 @@ namespace GoogleAnalytics.App
         public Tracker(string trackingId, IAnalyticsSession analyticsSession)
         {
             TrackingId = trackingId;
+            SessionStart = true;
             AnalyticsSession = analyticsSession;
 
             ClientId = AnalyticsSession.GetClientId();
@@ -47,17 +49,12 @@ namespace GoogleAnalytics.App
             AppVersion = AnalyticsSession.GetAppVersion();
             ScreenResolution = AnalyticsSession.GetScreenResolution();
             ScreenColors = AnalyticsSession.GetScreenColors();
-
-#if WINDOWS_PHONE
-            const string osplatform = "Windows Phone";
-            var osversion = Environment.OSVersion.Version.ToString();
-#else
-            const string osplatform = "Windows RT";
-            const string osversion = "8";
-#endif
+            OsPlatform = AnalyticsSession.GetOsPlatform();
+            OsVersion = AnalyticsSession.GetOsVersion();
+            DeviceName = AnalyticsSession.GetDeviceName();
 
             Language = CultureInfo.CurrentUICulture.Name;
-            UserAgent = string.Format("GoogleAnalytics/2.0b3 ({0}; U; {1}; {2})", osplatform, osversion, Language);
+            UserAgent = string.Format("GoogleAnalytics/2.0 ({0}; U; {1}; {2}{3})", OsPlatform, OsVersion, Language, DeviceName);
 
             ThrowOnErrors = false;
 
@@ -108,60 +105,6 @@ namespace GoogleAnalytics.App
             }
 
             return parameters;
-        }
-
-        private static byte[] GetRequestBytes(Dictionary<string,string> postParameters) {
-            if (postParameters == null || postParameters.Count == 0)
-                return new byte[0];
-            var sb = new StringBuilder();
-            foreach (var parameter in postParameters)
-                sb.Append(Uri.EscapeUriString(parameter.Key) + "=" + Uri.EscapeUriString(parameter.Value) + "&");
-            sb.Length = sb.Length - 1;
-            return Encoding.UTF8.GetBytes(sb.ToString());
-        }
-
-        private async Task<TrackingResult> RequestUrlAsync(string url, Dictionary<string, string> parameters) {
-            var requestBytes = GetRequestBytes(parameters);
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
-            request.UserAgent = UserAgent;
-            WebResponse response = null;
-            try
-            {
-                using (var oStream = await Task.Factory.FromAsync<Stream>(request.BeginGetRequestStream, request.EndGetRequestStream, null))
-                {
-                    oStream.Write(requestBytes, 0, requestBytes.Length);
-                }
-                response = await Task.Factory.FromAsync<WebResponse>(request.BeginGetResponse, request.EndGetResponse, null);
-                return new TrackingResult
-                {
-                    Url = url,
-                    Parameters = parameters,
-                    Success = true
-                };
-            }
-            catch (Exception e)
-            {
-                if (ThrowOnErrors)
-                    throw;
-
-                return new TrackingResult
-                {
-                    Url = url,
-                    Parameters = parameters,
-                    Success = false,
-                    Exception = e
-                };
-            }
-            finally
-            {
-                var disposableResult = response as IDisposable;
-                if (disposableResult != null)
-                {
-                    disposableResult.Dispose();
-                }
-            }
         }
     }
 }
