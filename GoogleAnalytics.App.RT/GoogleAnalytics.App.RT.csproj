@@ -100,12 +100,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="GoogleAnalytics.App.RT.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="..\GoogleAnalytics.App.WP7\IAnalyticsSession.cs">
       <Link>IAnalyticsSession.cs</Link>
     </Compile>

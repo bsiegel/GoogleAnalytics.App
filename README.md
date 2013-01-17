@@ -119,8 +119,4 @@ The exception that occurred during the call, if any. This is only populated when
 
 
 # Building the source
-After cloning the repository, run build.cmd. A folder named "Build" will be created and populated with:
-
-- Assemblies
-- PDB files
-- NuGet package
+After cloning the repository, run build.bat. You can optionally pass a configuration name (eg. "Release") to build.bat to build a specific configuration, or if not the Debug configuration will be used. When the build completes, the resulting NuGet package and symbol package will be in the build\\{configuration name} directory.

@@ -1,17 +1,14 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <version>$version$</version>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <version>2.0.0</version>
+    <authors>Brandon Siegel</authors>
     <licenseUrl>http://github.com/bsiegel/GoogleAnalytics.App/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>http://github.com/bsiegel/GoogleAnalytics.App</projectUrl>
-    <id>GoogleAnalytics.App.WP8</id>
-    <title>GoogleAnalytics.App.WP8</title>
+    <id>GoogleAnalytics.App</id>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>GoogleAnalytics.App is an unofficial SDK for interacting with Google Analytics. It is compatible with version 2 of the Google Analytics SDK for iOS and Android and uses Google Measurement Protocol to report app- and mobile-specific metrics.</description>
-    <summary>Google App Analytics for Windows Phone and Windows RT, Windows Phone 8 package.</summary>
-    <copyright>Copyright 2012 - 2013 Maarten Balliauw. Copyright 2013 Brandon Siegel.</copyright>
-    <tags>google analytics googleanalytics app ga wp8 windows phone windowsphone api sdk rest client tracker stats statistics measurement</tags>
+    <summary>Google App Analytics for Windows Phone and Windows RT.</summary>
+    <tags>google analytics googleanalytics app ga wp7 wp71 windows phone windowsphone winrt windowsrt windows rt windows8 win8 api sdk rest client tracker stats statistics measurement mango</tags>
   </metadata>
 </package>

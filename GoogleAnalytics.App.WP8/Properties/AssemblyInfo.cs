@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("GoogleAnalytics.App.WP8")]
 [assembly: AssemblyDescription("GoogleAnalytics.App")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Maarten Balliauw and Brandon Siegel")]
+[assembly: AssemblyCompany("Brandon Siegel")]
 [assembly: AssemblyProduct("GoogleAnalytics.App.WP8")]
-[assembly: AssemblyCopyright("Copyright © Maarten Balliauw 2012 - 2013. Copyright © Brandon Siegel 2013")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.0.*")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
