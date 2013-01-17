@@ -54,7 +54,7 @@ namespace GoogleAnalytics.App
         public string GetDeviceName()
         {
             var deviceInfo = new Windows.Security.ExchangeActiveSyncProvisioning.EasClientDeviceInformation();
-            return string.IsNullOrEmpty(deviceInfo.SystemSku) ? string.Format("; {0} {1}", deviceInfo.SystemManufacturer, deviceInfo.SystemProductName) : deviceInfo.SystemSku;
+            return string.IsNullOrEmpty(deviceInfo.SystemSku) ? string.Format("{0} {1}", deviceInfo.SystemManufacturer, deviceInfo.SystemProductName) : deviceInfo.SystemSku;
         }
     }
 }

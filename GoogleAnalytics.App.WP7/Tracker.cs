@@ -54,7 +54,7 @@ namespace GoogleAnalytics.App
             DeviceName = AnalyticsSession.GetDeviceName();
 
             Language = CultureInfo.CurrentUICulture.Name;
-            UserAgent = string.Format("GoogleAnalytics/2.0 ({0}; U; {1}; {2}{3})", OsPlatform, OsVersion, Language, DeviceName);
+            UserAgent = string.Format("GoogleAnalytics/2.0 ({0}; U; {1}; {2}; {3})", OsPlatform, OsVersion, Language, DeviceName);
 
             ThrowOnErrors = false;
 
