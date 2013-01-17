@@ -20,7 +20,7 @@ namespace GoogleAnalytics.App
                 return new byte[0];
             var sb = new StringBuilder();
             foreach (var parameter in postParameters)
-                sb.Append(Uri.EscapeUriString(parameter.Key) + "=" + Uri.EscapeUriString(parameter.Value) + "&");
+                sb.Append(Uri.EscapeDataString(parameter.Key) + "=" + Uri.EscapeDataString(parameter.Value) + "&");
             sb.Length = sb.Length - 1;
             return Encoding.UTF8.GetBytes(sb.ToString());
         }
