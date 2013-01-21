@@ -23,7 +23,7 @@ Initialize a new Tracker instance with the given tracking ID (e.g. "UA-XXXXXX-XX
 ### Properties
 
 ### `bool UseHttps`
-Optional. When true, send analytics messages over SSL. The default value for this property is `false`.
+Optional. When true, send analytics messages over SSL. The default value for this property is `true`.
 
 ### `bool Anonymize`
 Optional. When true, send a flag in each analytics message that instructs Google to anonymize the IP address of the sender. The default value for this property is `false`.
@@ -42,13 +42,13 @@ Set the value of a custom dimension for all tracking calls. Each custom dimensio
 ### `void SetCustom(int index, long metric)`
 Set the value of a custom metric for all tracking calls. Each custom metric has an associated index.
 
-### `async Task<TrackingResult> TrackViewAsync(string screen)`
+### `async Task<TrackingResult> SendViewAsync(string screen)`
 Track that the specified view or screen was displayed.
 
-### `async Task<TrackingResult> TrackEventAsync(string category, string action, [string label = null], [long? value = null])`
+### `async Task<TrackingResult> SendEventAsync(string category, string action, [string label = null], [long? value = null])`
 Track an event.
 
-### `async Task<TrackingResult> TrackTransactionAsync(Transaction tran)`
+### `async Task<TrackingResult> SendTransactionAsync(Transaction tran)`
 Track a transaction.
 
 ## Transaction

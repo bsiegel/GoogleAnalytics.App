@@ -41,6 +41,7 @@ namespace GoogleAnalytics.App
         public Tracker(string trackingId, IAnalyticsSession analyticsSession)
         {
             TrackingId = trackingId;
+            UseHttps = true;
             SessionStart = true;
             AnalyticsSession = analyticsSession;
 

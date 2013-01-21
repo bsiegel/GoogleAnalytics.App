@@ -8,7 +8,7 @@ namespace GoogleAnalytics.App
 {
     public partial class Tracker
     {
-        public async Task<TrackingResult> TrackViewAsync(string screen)
+        public async Task<TrackingResult> SendViewAsync(string screen)
         {
             AppScreen = screen;
 
@@ -19,7 +19,7 @@ namespace GoogleAnalytics.App
             return await RequestUrlAsync(UseHttps ? EndpointUrlSsl : EndpointUrl, parameters);
         }
 
-        public async Task<TrackingResult> TrackEventAsync(string category, string action, string label = null, Int64? value = null)
+        public async Task<TrackingResult> SendEventAsync(string category, string action, string label = null, Int64? value = null)
         {
             var parameters = GetDefaultParameters();
             parameters.Add("t", "event");
@@ -34,7 +34,7 @@ namespace GoogleAnalytics.App
             return await RequestUrlAsync(UseHttps ? EndpointUrlSsl : EndpointUrl, parameters);
         }
 
-        public async Task<TrackingResult[]> TrackTransactionAsync(Transaction tran)
+        public async Task<TrackingResult[]> SendTransactionAsync(Transaction tran)
         {
             var parameters = GetDefaultParameters();
             parameters.Add("t", "tran");
@@ -50,12 +50,12 @@ namespace GoogleAnalytics.App
             var tasks = new List<Task<TrackingResult>> { RequestUrlAsync(UseHttps ? EndpointUrlSsl : EndpointUrl, parameters) };
             if (tran.Items != null)
             {
-                tasks.AddRange(tran.Items.Select(item => TrackTransactionItemAsync(tran.OrderId, item)));
+                tasks.AddRange(tran.Items.Select(item => SendTransactionItemAsync(tran.OrderId, item)));
             }
             return await TaskEx.WhenAll(tasks);
         }
 
-        private async Task<TrackingResult> TrackTransactionItemAsync(string orderId, TransactionItem item)
+        private async Task<TrackingResult> SendTransactionItemAsync(string orderId, TransactionItem item)
         {
             var parameters = GetDefaultParameters();
             parameters.Add("t", "item");
@@ -76,7 +76,7 @@ namespace GoogleAnalytics.App
             var parameters = new Dictionary<string,string>
             {
                 { "ul", Language },
-                { "_v", "mi1b3" },
+                { "_v", "ma1b4" },
                 { "cid", ClientId },
                 { "cd", AppScreen },
                 { "tid", TrackingId },
